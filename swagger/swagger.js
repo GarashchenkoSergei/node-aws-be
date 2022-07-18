@@ -52,6 +52,49 @@
       }
     }
   },
-  "definitions": {},
+  "definitions": {
+    "Product": {
+      "properties": {
+        "id": {
+          "title": "Product.id",
+          "type": "string"
+        },
+        "price": {
+          "title": "Product.price",
+          "type": "number"
+        },
+        "title": {
+          "title": "Product.title",
+          "type": "string"
+        },
+        "description": {
+          "title": "Product.description",
+          "type": "string"
+        },
+        "count": {
+          "title": "Product.count",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "price",
+        "title",
+        "description",
+        "count"
+      ],
+      "additionalProperties": false,
+      "title": "Product",
+      "type": "object"
+    },
+    "ProductsList": {
+      "items": {
+        "$ref": "#/definitions/Product",
+        "title": "ProductsList.[]"
+      },
+      "title": "ProductsList.[]",
+      "type": "array"
+    }
+  },
   "securityDefinitions": {}
 };
