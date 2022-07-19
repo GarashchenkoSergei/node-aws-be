@@ -1,4 +1,6 @@
-export const productMocks = [
+import { Product } from '../types/api-types';
+
+export const productMocks: Product[] = [
   {
     "count": 4,
     "description": "Short Product Description1",

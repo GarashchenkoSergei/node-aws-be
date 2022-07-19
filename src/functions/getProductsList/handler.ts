@@ -1,7 +1,7 @@
-import type { APIGatewayProxyHandler, APIGatewayProxyResult } from "aws-lambda"
-import { productMocks } from '@mocks/products';
+import type { APIGatewayProxyResult } from "aws-lambda"
+import { productMocks } from '../../mocks/products';
 
-const getProductsList: APIGatewayProxyHandler = async (): Promise<APIGatewayProxyResult> => {
+const getProductsList = async (): Promise<APIGatewayProxyResult> => {
   try {
     // change to await request to DB in the future
     const products = JSON.stringify(productMocks);

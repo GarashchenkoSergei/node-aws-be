@@ -1,7 +1,13 @@
-import type { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda"
-import { productMocks } from '@mocks/products';
+import type { APIGatewayProxyResult } from "aws-lambda"
+import { productMocks } from '../../mocks/products';
 
-const getProductById = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+type Event = {
+  pathParameters: {
+    productId: unknown
+  }
+}
+
+const getProductById = async (event: Event): Promise<APIGatewayProxyResult> => {
   if (!event.pathParameters.productId) {
     return {
       statusCode: 400,
