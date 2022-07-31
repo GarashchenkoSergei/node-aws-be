@@ -1,38 +1,19 @@
-import type { APIGatewayProxyResult } from "aws-lambda"
-import { productMocks } from '../../mocks/products';
+import type { APIGatewayProxyResult } from "aws-lambda";
+import { getProductsListService } from '../../services/getProductsListService';
+import { serverErrorResponse, notFoundResponse, successResponse } from '../../libs/responseCreator';
 
 const getProductsList = async (): Promise<APIGatewayProxyResult> => {
   try {
-    // change to await request to DB in the future
-    const products = JSON.stringify(productMocks);
+    const products = await getProductsListService();
 
     if (!products) {
-      return {
-        statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({ error: 'products not found' }),
-      };
+      return notFoundResponse('Products not found');
     }
 
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: `${products}`,
-    };
+    return successResponse(products);
   } catch (error) {
-    return {
-      statusCode: 503,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: 'something went wrong',
-    };
+    return serverErrorResponse(error);
   }
-
 };
 
 export const main = getProductsList;
