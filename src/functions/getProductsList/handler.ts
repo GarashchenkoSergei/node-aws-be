@@ -1,4 +1,4 @@
-import type { APIGatewayProxyResult } from "aws-lambda";
+import type { APIGatewayProxyResult } from 'aws-lambda';
 import { getProductsListService } from '../../services/getProductsListService';
 import { serverErrorResponse, notFoundResponse, successResponse } from '../../libs/responseCreator';
 

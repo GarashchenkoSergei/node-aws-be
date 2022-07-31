@@ -1,6 +1,6 @@
-import type { APIGatewayProxyResult } from "aws-lambda";
+import type { APIGatewayProxyResult } from 'aws-lambda';
 import { serverErrorResponse, successResponse } from '../../libs/responseCreator';
-import { createProductService } from "src/services/createProductService";
+import { createProductService } from 'src/services/createProductService';
 
 const createProduct = async (event): Promise<APIGatewayProxyResult> => {
   try {
