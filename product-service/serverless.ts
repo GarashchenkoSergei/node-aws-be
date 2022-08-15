@@ -3,7 +3,7 @@ import type { AWS } from '@serverless/typescript';
 import { getProductsList, getProductById, createProduct } from './src/functions';
 
 const serverlessConfiguration: AWS = {
-  service: 'node-aws-be',
+  service: 'node-aws-be-product',
   frameworkVersion: '3',
   plugins: ['serverless-auto-swagger', 'serverless-esbuild', 'serverless-offline', 'serverless-dotenv-plugin', 'serverless-postgres'],
   useDotenv: true,
@@ -25,7 +25,6 @@ const serverlessConfiguration: AWS = {
       DB_DATABASE: '${env:DB_DATABASE}',
     },
   },
-  // import the function via paths
   functions: { getProductsList, getProductById, createProduct },
   package: { individually: true },
   custom: {
