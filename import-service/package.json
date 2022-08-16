@@ -1,7 +1,7 @@
 {
-  "name": "node-aws-be",
+  "name": "import-service",
   "version": "1.0.0",
-  "description": "Serverless aws-nodejs-typescript template",
+  "description": "Import service for a small Node AWS app",
   "main": "serverless.ts",
   "scripts": {
     "test": "jest",
@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@middy/core": "^2.5.3",
-    "@middy/http-json-body-parser": "^2.5.3"
+    "@middy/http-json-body-parser": "^2.5.3",
+    "aws-sdk": "^2.1194.0",
+    "csv-parser": "^3.0.0"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.0.0",
@@ -35,7 +37,6 @@
     "serverless-dotenv-plugin": "^4.0.1",
     "serverless-esbuild": "^1.23.3",
     "serverless-offline": "^9.1.0",
-    "serverless-postgres": "^1.10.3",
     "ts-jest": "^28.0.7",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.9.0",
