@@ -2,7 +2,7 @@ import type { AWS } from '@serverless/typescript'
 import { importProductsFile, importFileParser } from './src/functions';
 
 const serverlessConfiguration: AWS = {
-  service: 'node-aws-be-import',
+  service: 'node-aws-import-service',
   frameworkVersion: '3',
   configValidationMode: 'error',
   plugins: ['serverless-auto-swagger', 'serverless-esbuild', 'serverless-offline', 'serverless-dotenv-plugin'],
@@ -25,12 +25,12 @@ const serverlessConfiguration: AWS = {
       {
         Effect: 'Allow',
         Action: "s3:ListBucket",
-        Resource: "arn:aws:s3:::${self:custom.BucketName}"
+        Resource: ['arn:aws:s3:::${self:custom.BucketName}']
       },
       {
         Effect: 'Allow',
         Action: "s3:*",
-        Resource: "arn:aws:s3:::${self:custom.BucketName}/*"
+        Resource: ['arn:aws:s3:::${self:custom.BucketName}/*']
       }
     ]
   },
