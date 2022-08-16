@@ -23,8 +23,6 @@ const importProductsFile = async (event): Promise<APIGatewayProxyResult> => {
 
     const url = await s3.getSignedUrlPromise('putObject', s3Params);
 
-    console.log(url)
-
     return successResponse(url);
   } catch (error) {
     return serverErrorResponse(error);

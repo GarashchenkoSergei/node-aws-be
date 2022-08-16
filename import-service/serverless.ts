@@ -1,6 +1,5 @@
 import type { AWS } from '@serverless/typescript'
-
-import { importProductsFile } from './src/functions';
+import { importProductsFile, importFileParser } from './src/functions';
 
 const serverlessConfiguration: AWS = {
   service: 'node-aws-be-import',
@@ -26,16 +25,16 @@ const serverlessConfiguration: AWS = {
       {
         Effect: 'Allow',
         Action: "s3:ListBucket",
-        Resource: "arn:aws:s3:::shop-angular-cloudfront-images"
+        Resource: "arn:aws:s3:::${self:custom.BucketName}"
       },
       {
         Effect: 'Allow',
         Action: "s3:*",
-        Resource: "arn:aws:s3:::shop-angular-cloudfront-images/*"
+        Resource: "arn:aws:s3:::${self:custom.BucketName}/*"
       }
     ]
   },
-  functions: { importProductsFile },
+  functions: { importProductsFile, importFileParser },
   custom: {
     esbuild: {
       bundle: true,
